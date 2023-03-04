@@ -1,0 +1,21 @@
+﻿{
+  "QID": "2",
+  "Question": "I hvilken grad utviser eleven refleksjon i faget?",
+  "Alternatives": [
+    {
+      "AID": "1",
+      "Alternative": "Tidvis",
+      "Description": "Gjennom dine besvarelser utviser du til tider noe refleksjon omkring matematiske problemstillinger."
+    },
+    {
+      "AID": "2",
+      "Alternative": "God",
+      "Description": "Gjennom dine dine besvarelser utviser du god evne til refleksjon omkring matematiske problemstillinger."
+    },
+    {
+      "AID": "3",
+      "Alternative": "Svært god",
+      "Description": "Gjennom dine besvarelser utviser du svært god evne til refleksjon omkring matematiske problemstillinger."
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+﻿@page "/iup"
+@inject HttpClient Http
+
+<PageTitle>Pupil Cooperation Critera</PageTitle>
+
+<h1>I hvilken grad klarer eleven å arbeide eleven i timene? </h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (pupilWork == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Degree</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>@pupilWork.Question</td>
+                <select class="form-control" id="Style" @bind="WorkDescription" @bind:event="onchange">
+                    @foreach (var alternative in pupilWork.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+                                        
+            </tr>
+            <tr>
+                <td>@pupilReflection.Question</td>
+                <select class="form-control" id="Style" @bind="ReflectionDescription" @bind:event="onchange">
+                    @foreach (var alternative in pupilReflection.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+                                                    
+            </tr>
+            <tr>
+                <td>@pupilDevelopment.Question</td>
+                <select class="form-control" id="Style" @bind="DevelopmentDescription" @bind:event="onchange">
+                    @foreach (var alternative in pupilDevelopment.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+                                                    
+            </tr>
+            <tr>
+                <td>@pupilFocusTopics.Question</td>
+                <select class="form-control" id="Style" @bind="FocusTopicDescription" @bind:event="onchange">
+                    @foreach (var alternative in pupilDevelopment.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+                                                    
+            </tr>
+            </tbody>
+        </table>
+
+
+<div class="form-group">
+   <label for="Style">Style</label>
+   
+</div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <h4>Fritekst</h4>
+                <textarea @bind="textAreaCustomOnInput" @bind:event="oninput" rows="8"></textarea>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <h4>IUP Generated Text</h4>
+                <InputTextArea @bind-Value="@TextAreaResult" rows="8"  onClick="this.select();"/>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+
+    private MathEvaluation? pupilWork;
+    private MathEvaluation? pupilReflection;
+    private MathEvaluation? pupilDevelopment;
+    private MathEvaluation? pupilFocusTopics;
+    
+    private Dictionary<int, List<CriteriaAlternative>> aidDic;
+    private Dictionary<string, Dictionary<string, string>> qaDictionary;
+
+    public string WorkDescription { get; set; } //= string.Empty;
+    public string ReflectionDescription { get; set; } //= string.Empty;
+    public string DevelopmentDescription { get; set; } //= string.Empty;
+    public string FocusTopicDescription { get; set; } //= string.Empty;
+    public string FullDescription { get ; set; } //= string.Empty;
+
+
+    private string textAreaCustomOnInput = "testInput";
+    private string textAreaCustomInput = "test";
+    public string TextAreaCustomInput { get; set; }
+    
+    
+    private string testDesc; // = string.Empty;
+    public string TextAreaResult
+    {
+        get { return $"{textAreaCustomOnInput}\n{WorkDescription}\n{ReflectionDescription}\n{DevelopmentDescription}\n{FocusTopicDescription}"; }   // get method
+        set { testDesc = value; }  // set method
+    }
+
+    
+    private int rows = 10;
+
+    protected override async Task OnInitializedAsync()
+    {
+        pupilWork = await Http.GetFromJsonAsync<MathEvaluation>("sample-data/pupilWork.json");
+        pupilReflection = await Http.GetFromJsonAsync<MathEvaluation>("sample-data/pupilReflection.json");
+        pupilDevelopment = await Http.GetFromJsonAsync<MathEvaluation>("sample-data/pupilDevelopment.json");
+        pupilFocusTopics = await Http.GetFromJsonAsync<MathEvaluation>("sample-data/pupilFocusTopics.json");
+        
+    }
+
+
+    public int index = 0;
+
+    // When item changes. Get the description for the item. Used for the collective box.
+    public void ItemChanged(ChangeEventArgs args, int qid, int aid)
+    {
+        List<CriteriaAlternative> result;
+        var temp = aidDic.TryGetValue(qid, out result);
+        var aidDescDictionary = result.ToDictionary(key => key.AID, values => values.Description);
+        var description = aidDescDictionary.TryGetValue(aid, out string aidDesc);
+
+        textAreaCustomInput = aidDesc;
+
+    }
+    
+
+    public class MathEvaluation
+    {
+        public int QID { get; set; }
+        public string Question { get; set; }
+        public List<CriteriaAlternative> Alternatives { get; set; }
+    }
+
+    public class CriteriaAlternative
+    {
+        public int AID { get; set; }
+        public string Alternative { get; set; }
+        public string Description { get; set; }
+    }
+}
