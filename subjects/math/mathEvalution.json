@@ -1,0 +1,136 @@
+﻿[
+  {
+    "Id": "1",
+    "Question": "I hvilken grad klarer eleven å arbeide eleven i timene? ",
+    "Alternatives" : [
+      {
+        "Id": "1",
+        "Alternative": "Delvis",
+        "Description": "Matematikk er et fag hvor det er svært viktig å følge godt med. Dette skyldes at faget bygger på kunnskap vi allerede besitter. I undervisningen viser du delvis god innsats og engasjement."
+      },
+      {
+        "Id": "2",
+        "Alternative": "Godt",
+        "Description": "Matematikk er et fag hvor det er svært viktig å følge godt med. Dette skyldes at faget bygger på kunnskap vi allerede besitter. I undervisningen viser du både god innsats og engasjement."
+      },
+      {
+        "Id": "3",
+        "Alternative": "Svært god",
+        "Description": "Du jobber fremragende med faget på skolen og hjemme. Dette gir et solid grunnlag for videre innlæring av matematiske problemstillinger. "
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Question": "I hvilken grad utviser eleven refleksjon i faget?",
+    "Alternatives": [
+      {
+        "Id": "1",
+        "Alternative": "2",
+        "Description": "Gjennom dine besvarelser utviser du til tider noe refleksjon omkring matematiske problemstillinger."
+      },
+      {
+        "Id": "2",
+        "Alternative": "423222",
+        "Description": "232Gjennom dine besvarelser utviser du til tider noe refleksjon omkring matematiske problemstillinger."
+      },
+      {
+        "Id": "3",
+        "Alternative": "Tidvis",
+        "Description": "Gjennom dine besvarelser utviser du til tider noe refleksjon omkring matematiske problemstillinger."
+      }
+    ]
+  },
+  {
+    "Id": "3",
+    "Question": "Hvilket område har eleven vist utvikling dette semesteret",
+    "Alternatives" : [
+      {
+        "Id": "1",
+        "Alternative": "Tall",
+        "Description": "Det er også fint å se at du har klart å utvikle din tallforståelse dette semesteret."
+      },
+      {
+        "Id": "2",
+        "Alternative": "Regning",
+        "Description": "Det er også fint å se at du har klart å utvikle deg innen de fire regnearter dette semesteret."
+      },
+      {
+        "Id": "3",
+        "Alternative": "Brøk",
+        "Description": "Det er også fint å se at du har klart å utvikle deg innen brøk dette semesteret."
+      },
+      {
+        "Id": "4",
+        "Alternative": "Potenser",
+        "Description": "Det er også fint å se at du har klart å utvikle deg innen potenser dette semesteret."
+      },
+      {
+        "Id": "5",
+        "Alternative": "Likninger og algebra",
+        "Description": "Det er også fint å se at du har klart å utvikle din kompetanse innen likninger og algebra dette semesteret."
+      },
+      {
+        "Id": "6",
+        "Alternative": "Funksjoner",
+        "Description": "Det er også fint å se at du har klart å utvikle din kompetanse i bruk og tolkning av funksjoner dette semesteret."
+      },
+      {
+        "Id": "7",
+        "Alternative": "Mål og enheter",
+        "Description": "Det er også fint å se at du har klart å utvikle din forståelse for mål og enheter dette semesteret."
+      },
+      {
+        "Id": "8",
+        "Alternative": "Programmering",
+        "Description": "Det er også fint å se at du har klart å utvikle dine ferdigheter innen programmering dette semesteret."
+      }
+    ]
+  },
+  {
+    "Id": "4",
+    "Question": "Hvilket fagområde er det viktigst at eleven arbeider videre med?",
+    "Alternatives" : [
+      {
+        "Id": "1",
+        "Alternative": "Tall",
+        "Description": "Basert på hva du får vist i undervisningen og på prøver, er det viktig at du jobber videre med tall. Dette innebærer blant annet å forstå desimaltall, og deres plassering på en tallinje"
+      },
+      {
+        "Id": "2",
+        "Alternative": "Regning",
+        "Description": "Basert på hva du får vist i undervisningen og på prøver, er det viktig at du jobber videre med regning. Dette innebærer å kunne sette opp regnestykker på papir."
+      },
+      {
+        "Id": "3",
+        "Alternative": "Brøk",
+        "Description": "Basert på hva du får vist i undervisningen og på prøver, er det viktig at du jobber videre med brøk. Dette innebærer å kunne regne med brøk, samt sette opp brøkstykker for å løse andre matematiske utfordringer. "
+      },
+      {
+        "Id": "4",
+        "Alternative": "Potenser",
+        "Description": "Basert på hva du får vist i undervisningen og på prøver, er det viktig at du jobber videre med potenser. "
+      },
+      {
+        "Id": "5",
+        "Alternative": "Likninger og algebra",
+        "Description": "Basert på hva du får vist i undervisningen og på prøver, er det viktig at du jobber videre med likninger og algebra."
+      },
+      {
+        "Id": "6",
+        "Alternative": "Funksjoner",
+        "Description": "Basert på hva du får vist i undervisningen og på prøver, er det viktig at du jobber videre med funksjoner."
+      },
+      {
+        "Id": "7",
+        "Alternative": "Mål og enheter",
+        "Description": "Basert på hva du får vist i undervisningen og på prøver, er det viktig at du jobber videre med mål og enheter."
+      },
+      {
+        "Id": "8",
+        "Alternative": "Programmering",
+        "Description": "Basert på hva du får vist i undervisningen og på prøver, er det viktig at du jobber videre med programmering."
+      }
+    ]
+  }
+]
