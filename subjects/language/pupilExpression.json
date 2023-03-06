@@ -1,0 +1,16 @@
+﻿{
+  "QID": "1",
+  "Question": "I hvilken grad klarer eleven å uttrykke seg skriftlig og muntlig?",
+  "Alternatives" : [
+    {
+      "AID": "1",
+      "Alternative": "Delvis",
+      "Description": "I det skriftlige arbeidet har du vist at du klarer å utrykke deg til dels godt både skriftlig og muntlig."
+    },
+    {
+      "AID": "2",
+      "Alternative": "Godt",
+      "Description": "I det skriftlige arbeidet har du vist at du klarer å utrykke deg godt både skriftlig og muntlig."
+    }
+  ]
+}
