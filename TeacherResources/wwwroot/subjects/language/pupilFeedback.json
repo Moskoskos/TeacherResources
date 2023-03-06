@@ -1,0 +1,16 @@
+﻿{
+  "QID": "1",
+  "Question": "I hvilken grad klarer eleven å bruke tilbakemeldinger til videre utvikling?",
+  "Alternatives" : [
+    {
+      "AID": "1",
+      "Alternative": "Delvis",
+      "Description": " Jeg ser også at du klarer å ta til deg tilbakemeldinger fra tidligere arbeid, og videre inn i nye oppgaver."
+    },
+    {
+      "AID": "2",
+      "Alternative": "Aktivt",
+      "Description": " Jeg ser også at du aktivt tar til deg tilbakemeldinger fra tidligere arbeid, og videre inn i nye oppgaver."
+    }
+  ]
+}

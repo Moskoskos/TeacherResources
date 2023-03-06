@@ -1,0 +1,181 @@
+﻿@page "/iupLanguage"
+@using System.Net.Mime
+@inject HttpClient Http
+
+<PageTitle>IUP</PageTitle>
+
+<h4>Språk</h4>
+<p>
+    
+</p>
+
+@if (pupilExpression == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p> 
+}
+else
+{
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <h5>Generell del:</h5>
+                <textarea @bind="textAreaCustomOnInput" @bind:event="oninput" rows="8" placeholder="Skriv inn generell del som gjelder for alle elever i faget."></textarea>
+            </div>
+        </div>
+    </div>
+    <p>
+        
+    </p>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Vurderingskriterie</th>
+                <th>Alternativer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>@pupilExpression.Question</td>
+                <select class="form-control" id="Style" @bind="ExpressionDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
+                    @foreach (var alternative in pupilExpression.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+                                        
+            </tr>
+            <tr>
+                <td>@pupilReflection.Question</td>
+                <select class="form-control" id="Style" @bind="ReflectionDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
+                    @foreach (var alternative in pupilReflection.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+                                                    
+            </tr>
+            <tr>
+                <td>@pupilAdaptation.Question</td>
+                <select class="form-control" id="Style" @bind="AdaptationtDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
+                    @foreach (var alternative in pupilAdaptation.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+                                                    
+            </tr>
+            <tr>
+                <td>@pupilFocusAreaWriting.Question</td>
+                <select class="form-control" id="Style" @bind="FocusAreaWritingDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
+                    @foreach (var alternative in pupilFocusAreaWriting.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+            </tr>
+            <tr>
+                <td>@pupilFocusAreaSpeech.Question</td>
+                <select class="form-control" id="Style" @bind="FocusAreaSpeechDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
+                    @foreach (var alternative in pupilFocusAreaSpeech.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+            </tr>
+            <tr>
+                <td>@pupilFeedback.Question</td>
+                <select class="form-control" id="Style" @bind="FeedbackDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
+                    @foreach (var alternative in pupilFeedback.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+    <p>
+        
+    </p>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <h5>Generert tekst:</h5>
+                <InputTextArea @bind-Value="@TextAreaResult" rows="8"  onClick="this.select();"/>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+
+    private CriteraModel? pupilExpression;
+    private CriteraModel? pupilReflection;
+    private CriteraModel? pupilAdaptation;
+    private CriteraModel? pupilFocusAreaWriting;
+    private CriteraModel? pupilFocusAreaSpeech;
+    private CriteraModel? pupilFeedback;
+    
+    private Dictionary<int, List<CriteriaAlternative>> aidDic;
+    private Dictionary<string, Dictionary<string, string>> qaDictionary;
+
+    public string ExpressionDescription { get; set; } //= string.Empty;
+    public string ReflectionDescription { get; set; } //= string.Empty;
+    public string AdaptationtDescription { get; set; } //= string.Empty;
+    public string FocusAreaWritingDescription { get; set; } //= string.Empty;
+    public string FocusAreaSpeechDescription { get; set; } //= string.Empty;
+    public string FeedbackDescription { get; set; } //= string.Empty;
+    public string FullDescription { get ; set; } //= string.Empty;
+
+
+    private string textAreaCustomOnInput = "";
+    private string textAreaCustomInput = "test";
+    public string TextAreaCustomInput { get; set; }
+    
+    
+    private string testDesc; // = string.Empty;
+    public string TextAreaResult
+    {
+        get { return $"{textAreaCustomOnInput}\n{ExpressionDescription}\n{ReflectionDescription}\n{AdaptationtDescription}\n{FocusAreaWritingDescription}\n{FocusAreaSpeechDescription}\n{FeedbackDescription}"; }   // get method
+        set { testDesc = value; }  // set method
+    }
+
+    
+    private int rows = 10;
+
+    protected override async Task OnInitializedAsync()
+    {
+        pupilExpression = await Http.GetFromJsonAsync<CriteraModel>("subjects/language/pupilExpression.json");
+        pupilReflection = await Http.GetFromJsonAsync<CriteraModel>("subjects/language/pupilReflection.json");
+        pupilAdaptation = await Http.GetFromJsonAsync<CriteraModel>("subjects/language/pupilAdaptation.json");
+        pupilFocusAreaWriting = await Http.GetFromJsonAsync<CriteraModel>("subjects/language/pupilFocusAreaWriting.json");
+        pupilFocusAreaSpeech = await Http.GetFromJsonAsync<CriteraModel>("subjects/language/pupilFocusAreaSpeech.json");
+        pupilFeedback = await Http.GetFromJsonAsync<CriteraModel>("subjects/language/pupilFeedback.json");
+    }
+    
+    // TODO Move this class to a dedicated file. Used by other pages.
+    public class CriteraModel
+    {
+        public int QID { get; set; }
+        public string Question { get; set; }
+        public List<CriteriaAlternative> Alternatives { get; set; }
+    }
+
+    // TODO Move this class to a dedicated file. Used by other pages.
+    public class CriteriaAlternative
+    {
+        public int AID { get; set; }
+        public string Alternative { get; set; }
+        public string Description { get; set; }
+    }
+}

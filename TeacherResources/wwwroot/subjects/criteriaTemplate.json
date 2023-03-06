@@ -1,0 +1,21 @@
+﻿{
+  "QID": "1",
+  "Question": "",
+  "Alternatives" : [
+    {
+      "AID": "1",
+      "Alternative": "",
+      "Description": ""
+    },
+    {
+      "AID": "2",
+      "Alternative": "",
+      "Description": ""
+    },
+    {
+      "AID": "3",
+      "Alternative": "",
+      "Description": ""
+    }
+  ]
+}

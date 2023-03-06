@@ -13,23 +13,42 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\subjects\norwegian" />
+      <Folder Include="wwwroot\sample-data" />
+      <Folder Include="wwwroot\subjects\natural-sciences" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="wwwroot\sample-data\mathEvaluation.json">
+      <Content Update="wwwroot\subjects\math\pupilWork.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Update="wwwroot\sample-data\pupilDevelopment.json">
+      <Content Update="wwwroot\subjects\math\pupilDevelopment.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Update="wwwroot\sample-data\pupilWork.json">
+      <Content Update="wwwroot\subjects\math\pupilFocusTopics.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Update="wwwroot\sample-data\pupilFocusTopics.json">
+      <Content Update="wwwroot\subjects\math\pupilReflection.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Update="wwwroot\sample-data\pupilReflection.json">
+      <Content Update="wwwroot\subjects\norwegian\pupilExpression.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\subjects\criteriaTemplate.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\subjects\norwegian\pupilReflection.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\subjects\language\pupilAdaptation.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\subjects\language\pupilFocusAreaWriting.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\subjects\language\pupilFocusAreaSpeech.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\subjects\language\pupilFeedback.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

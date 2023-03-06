@@ -1,0 +1,21 @@
+﻿{
+  "QID": "1",
+  "Question": "I hvilken grad klarer eleven å tilpasse seg ulike situasjoner?",
+  "Alternatives" : [
+    {
+      "AID": "1",
+      "Alternative": "Noen ganger",
+      "Description": "Du klarer tidvis å tilpasse deg ulike situasjoner og mottakere både skriftlig og muntlig."
+    },
+    {
+      "AID": "2",
+      "Alternative": "Som regel",
+      "Description": "Du klarer som regel å tilpasse deg ulike situasjoner og mottakere både skriftlig og muntlig."
+    },
+    {
+      "AID": "3",
+      "Alternative": "I stor grad",
+      "Description": "Du klarer i stor grad å tilpasse deg ulike situasjoner og mottakere både skriftlig og muntlig."
+    }
+  ]
+}

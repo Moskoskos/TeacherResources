@@ -1,0 +1,21 @@
+﻿{
+  "QID": "1",
+  "Question": "Hvilken av ferdighetene må eleven arbeide med for å øke skriftlige ferdigheter?",
+  "Alternatives" : [
+    {
+      "AID": "1",
+      "Alternative": "Grammatikk",
+      "Description": "gramatikk. Det er da særskilt viktig å ha fokus på forskjellen mellom og/å, tegnsetting, og sammensatte ord."
+    },
+    {
+      "AID": "2",
+      "Alternative": "Struktur",
+      "Description": "struktur. Dette innebærer inndeling av avsnitt, unngå oppramsing, og føre oppgavenummer."
+    },
+    {
+      "AID": "3",
+      "Alternative": "Innhold",
+      "Description": "innhold. Dette innebærer å svare på det oppgaven spør om, variere språket og sørge for å ha med innledning, hoveddel og avslutning."
+    }
+  ]
+}
