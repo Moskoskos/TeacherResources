@@ -1,9 +1,10 @@
 ﻿@page "/iup"
+@using System.Net.Mime
 @inject HttpClient Http
 
 <PageTitle>IUP</PageTitle>
 
-<h3>I hvilken grad klarer eleven å arbeide eleven i timene? </h3>
+<h4>Matematikk </h4>
 
 @if (pupilWork == null)
 {
@@ -13,6 +14,14 @@
 }
 else
 {
+    <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <h5>Generell del:</h5>
+                        <textarea @bind="textAreaCustomOnInput" @bind:event="oninput" rows="8" placeholder="Skriv inn generell del som gjelder for alle elever i faget."></textarea>
+                    </div>
+                </div>
+    </div>
     <div>
         <table class="table">
             <thead>
@@ -25,6 +34,7 @@ else
             <tr>
                 <td>@pupilWork.Question</td>
                 <select class="form-control" id="Style" @bind="WorkDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
                     @foreach (var alternative in pupilWork.Alternatives)
                     {
                         <option value="@alternative.Description">@alternative.Alternative</option>
@@ -35,6 +45,7 @@ else
             <tr>
                 <td>@pupilReflection.Question</td>
                 <select class="form-control" id="Style" @bind="ReflectionDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
                     @foreach (var alternative in pupilReflection.Alternatives)
                     {
                         <option value="@alternative.Description">@alternative.Alternative</option>
@@ -45,6 +56,7 @@ else
             <tr>
                 <td>@pupilDevelopment.Question</td>
                 <select class="form-control" id="Style" @bind="DevelopmentDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
                     @foreach (var alternative in pupilDevelopment.Alternatives)
                     {
                         <option value="@alternative.Description">@alternative.Alternative</option>
@@ -55,6 +67,7 @@ else
             <tr>
                 <td>@pupilFocusTopics.Question</td>
                 <select class="form-control" id="Style" @bind="FocusTopicDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
                     @foreach (var alternative in pupilDevelopment.Alternatives)
                     {
                         <option value="@alternative.Description">@alternative.Alternative</option>
@@ -66,15 +79,10 @@ else
         </table>
     </div>
     <div class="row">
+
         <div class="col">
             <div class="row">
-                <h4>Fritekst</h4>
-                <textarea @bind="textAreaCustomOnInput" @bind:event="oninput" rows="8"></textarea>
-            </div>
-        </div>
-        <div class="col">
-            <div class="row">
-                <h4>IUP Generated Text</h4>
+                <h5>Generert tekst:</h5>
                 <InputTextArea @bind-Value="@TextAreaResult" rows="8"  onClick="this.select();"/>
             </div>
         </div>
@@ -98,7 +106,7 @@ else
     public string FullDescription { get ; set; } //= string.Empty;
 
 
-    private string textAreaCustomOnInput = "Skriv inn din fritekst i det venstre feltet.\n Tekst vil genereres i feltet til høyre.";
+    private string textAreaCustomOnInput = "";
     private string textAreaCustomInput = "test";
     public string TextAreaCustomInput { get; set; }
     
@@ -121,21 +129,9 @@ else
         pupilFocusTopics = await Http.GetFromJsonAsync<MathEvaluation>("sample-data/pupilFocusTopics.json");
         
     }
+    
+    
 
-
-    public int index = 0;
-
-    // When item changes. Get the description for the item. Used for the collective box.
-    public void ItemChanged(ChangeEventArgs args, int qid, int aid)
-    {
-        List<CriteriaAlternative> result;
-        var temp = aidDic.TryGetValue(qid, out result);
-        var aidDescDictionary = result.ToDictionary(key => key.AID, values => values.Description);
-        var description = aidDescDictionary.TryGetValue(aid, out string aidDesc);
-
-        textAreaCustomInput = aidDesc;
-
-    }
     
 
     public class MathEvaluation
