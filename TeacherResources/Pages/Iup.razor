@@ -1,17 +1,15 @@
 ﻿@page "/iup"
 @inject HttpClient Http
 
-<PageTitle>Pupil Cooperation Critera</PageTitle>
+<PageTitle>IUP</PageTitle>
 
-<h1>I hvilken grad klarer eleven å arbeide eleven i timene? </h1>
-
-<p>This component demonstrates fetching data from the server.</p>
+<h3>I hvilken grad klarer eleven å arbeide eleven i timene? </h3>
 
 @if (pupilWork == null)
 {
     <p>
         <em>Loading...</em>
-    </p>
+    </p> 
 }
 else
 {
@@ -19,8 +17,8 @@ else
         <table class="table">
             <thead>
             <tr>
-                <th>Description</th>
-                <th>Degree</th>
+                <th>Vurderingskriterie</th>
+                <th>Alternativer</th>
             </tr>
             </thead>
             <tbody>
@@ -66,12 +64,6 @@ else
             </tr>
             </tbody>
         </table>
-
-
-<div class="form-group">
-   <label for="Style">Style</label>
-   
-</div>
     </div>
     <div class="row">
         <div class="col">
