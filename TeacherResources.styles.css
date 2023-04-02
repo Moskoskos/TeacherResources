@@ -1,3 +1,15 @@
+/* /Pages/Index.razor.rz.scp.css */
+body[b-frr7xoc0we] {
+
+}
+/* /Pages/IupLanguage.razor.rz.scp.css */
+body[b-wveq7ogzw6] {
+}
+/* /Pages/IupMath.razor.rz.scp.css */
+body[b-khv6gsersz] {
+}
+
+
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-s7t43zzchn] {
     position: relative;
@@ -10,11 +22,11 @@ main[b-s7t43zzchn] {
 }
 
 .sidebar[b-s7t43zzchn] {
-    background-image: linear-gradient(180deg, rgb(252, 129, 42) 0%, #472f06 70%);
+    background-color: #D8CACB;
 }
 
 .top-row[b-s7t43zzchn] {
-    background-color: #f7f7f7;
+    background-color: whitesmoke;
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
     height: 3.5rem;
@@ -57,7 +69,7 @@ main[b-s7t43zzchn] {
     }
 
     .sidebar[b-s7t43zzchn] {
-        width: 250px;
+        width: 200px;
         height: 100vh;
         position: sticky;
         top: 0;
@@ -87,7 +99,7 @@ main[b-s7t43zzchn] {
 
 .top-row[b-dwie7tztkw] {
     height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color: whitesmoke;
 }
 
 .navbar-brand[b-dwie7tztkw] {
@@ -115,7 +127,7 @@ main[b-s7t43zzchn] {
     }
 
     .nav-item[b-dwie7tztkw]  a {
-        color: #d7d7d7;
+        color: white;
         border-radius: 4px;
         height: 3rem;
         display: flex;
@@ -131,6 +143,7 @@ main[b-s7t43zzchn] {
 .nav-item[b-dwie7tztkw]  a:hover {
     background-color: rgba(255,255,255,0.1);
     color: white;
+    font-size:larger;
 }
 
 @media (min-width: 641px) {
