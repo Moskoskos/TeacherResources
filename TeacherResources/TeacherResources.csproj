@@ -18,6 +18,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Update="wwwroot\subjects\language\pupilExpression.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <Content Update="wwwroot\subjects\math\pupilWork.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
