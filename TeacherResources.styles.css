@@ -55,6 +55,15 @@ body[b-khv6gsersz] {
     background-color: #D4C5C6;
     padding: 50px;
 }
+
+/* Add this media query at the bottom of the file */
+@media (max-width: 900px) {
+    .container[b-s7t43zzchn] {
+        padding-top: 2px; /* Reduce padding for smaller screens */
+        width: 100%;
+    }
+    .conte[b-s7t43zzchn]
+}
 /* /Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-dwie7tztkw] {
     background-color: rgba(255, 255, 255, 0.1);
@@ -109,7 +118,7 @@ body[b-khv6gsersz] {
     font-size:larger;
 }
 
-@media (min-width: 641px) {
+@media (min-width: 900px) {
     .navbar-toggler[b-dwie7tztkw] {
         display: none;
     }
@@ -183,7 +192,7 @@ body[b-khv6gsersz] {
     font-size:larger;
 }
 
-@media (min-width: 641px) {
+@media (min-width: 900px) {
     .navbar-toggler[b-rhutsts0ir] {
         display: none;
     }
