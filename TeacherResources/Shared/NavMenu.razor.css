@@ -51,7 +51,7 @@
     font-size:larger;
 }
 
-@media (min-width: 641px) {
+@media (min-width: 900px) {
     .navbar-toggler {
         display: none;
     }
