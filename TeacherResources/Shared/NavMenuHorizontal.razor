@@ -1,0 +1,47 @@
+﻿<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <div class="nav">
+        <div class="nav-item">
+            <NavLink class="nav-link" href="iupMath">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Matematikk
+            </NavLink>
+        </div>
+        <div class="nav-item">
+            <NavLink class="nav-link" href="iupLanguage">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Språk
+            </NavLink>
+        </div>
+        <div class="nav-item">
+            <NavLink class="nav-link disabled" href="iupLanguage">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Naturfag
+            </NavLink>
+        </div>
+        <div class="nav-item">
+            <NavLink class="nav-link disabled" href="iupLanguage">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Historie
+            </NavLink>
+        </div>
+        <div class="nav-item">
+            <NavLink class="nav-link disabled" href="iupLanguage">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Samfunnsfag
+            </NavLink>
+        </div>
+                <div class="nav-item">
+                    <NavLink class="nav-link disabled" href="iupLanguage">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Kroppsøvning
+                    </NavLink>
+                </div>
+        
+    </div>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+}
