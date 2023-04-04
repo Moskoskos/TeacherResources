@@ -45,3 +45,12 @@
     background-color: #D4C5C6;
     padding: 50px;
 }
+
+/* Add this media query at the bottom of the file */
+@media (max-width: 900px) {
+    .container {
+        padding-top: 2px; /* Reduce padding for smaller screens */
+        width: 100%;
+    }
+    .conte
+}
