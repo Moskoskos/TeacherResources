@@ -2,6 +2,20 @@
 /* /Pages/IupLanguage.razor.rz.scp.css */
 body[b-wveq7ogzw6] {
 }
+
+
+
+
+
+
+/* Add this media query at the bottom of the file */
+@media (max-width: 900px) {
+
+    .textarea[b-wveq7ogzw6] {
+        padding: 10px;
+    }
+
+}
 /* /Pages/IupMath.razor.rz.scp.css */
 body[b-khv6gsersz] {
 }
@@ -20,7 +34,7 @@ body[b-khv6gsersz] {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: #D4C5C6;
+    background-color: white;
     
 }
 
@@ -36,8 +50,10 @@ body[b-khv6gsersz] {
     display: flex;
     justify-content: center;
     background-color: #D4C5C6;
-    
+    padding: 1px;
 }
+
+
 
 .nav-container[b-s7t43zzchn] {
     max-width: 1200px;
@@ -58,16 +74,19 @@ body[b-khv6gsersz] {
     max-height: fit-content;
     width: 100%;
     background-color: #D4C5C6;
-    padding: 50px;
+    padding: 20px 50px 50px;
 }
 
 /* Add this media query at the bottom of the file */
 @media (max-width: 900px) {
     .container[b-s7t43zzchn] {
-        padding-top: 2px; /* Reduce padding for smaller screens */
+        padding: 10px; /* Reduce padding for smaller screens */
         width: 100%;
     }
-    .conte[b-s7t43zzchn]
+    .content[b-s7t43zzchn] {
+        padding: 10px;
+    }
+    
 }
 /* /Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-dwie7tztkw] {
@@ -153,6 +172,8 @@ body[b-khv6gsersz] {
     font-size: 1.1rem;
 }
 
+
+
 .oi[b-rhutsts0ir] {
     width: 2rem;
     font-size: 1.1rem;
@@ -172,9 +193,16 @@ body[b-khv6gsersz] {
     
 }
 
+.nav-link[b-rhutsts0ir]{
+    padding: 2px;
+}
+
 .nav[b-rhutsts0ir] {
     display: flex;
     justify-content: center;
+}
+.navbar-expand-lg[b-rhutsts0ir]{
+    padding: 2px;
 }
 
 .nav-item[b-rhutsts0ir]  a {
@@ -197,7 +225,7 @@ body[b-khv6gsersz] {
     font-size:larger;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 815px) { /* Below 815 the navbar creates a second row. */
     .navbar-toggler[b-rhutsts0ir] {
         display: none;
     }
