@@ -11,6 +11,8 @@
     font-size: 1.1rem;
 }
 
+
+
 .oi {
     width: 2rem;
     font-size: 1.1rem;
@@ -30,9 +32,16 @@
     
 }
 
+.nav-link{
+    padding: 2px;
+}
+
 .nav {
     display: flex;
     justify-content: center;
+}
+.navbar-expand-lg{
+    padding: 2px;
 }
 
 .nav-item ::deep a {
@@ -55,7 +64,7 @@
     font-size:larger;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 815px) { /* Below 815 the navbar creates a second row. */
     .navbar-toggler {
         display: none;
     }

@@ -1,2 +1,16 @@
 ﻿body {
 }
+
+
+
+
+
+
+/* Add this media query at the bottom of the file */
+@media (max-width: 900px) {
+
+    .textarea {
+        padding: 10px;
+    }
+
+}
