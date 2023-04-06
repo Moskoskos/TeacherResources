@@ -37,7 +37,7 @@ else
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr style="border-bottom-color: whitesmoke">
                 <td>@pupilExpression.Question</td>
                 <select class="form-control" id="Style" @bind="ExpressionDescription" @bind:event="onchange">
                     <option value="" selected disabled hidden>Velg alternativ</option>
@@ -115,6 +115,12 @@ else
             </div>
         </div>
     </div>
+    
+    <div class="row" style="padding-top: 5px">
+            <button @onclick="ResetContent">
+                Tilbakestill innhold
+            </button>
+    </div>
 }
 
 @code {
@@ -146,7 +152,7 @@ else
     private string testDesc; // = string.Empty;
     public string TextAreaResult
     {
-        get { return $"{textAreaCustomOnInput}\n{ExpressionDescription}{ReflectionDescription} {AdaptationtDescription} {FocusAreaWritingDescription} {FocusAreaSpeechDescription} {FeedbackDescription}"; }   // get method
+        get { return $"{textAreaCustomOnInput}\n{ExpressionDescription} {ReflectionDescription} {AdaptationtDescription} {FocusAreaWritingDescription} {FocusAreaSpeechDescription} {FeedbackDescription}"; }   // get method
         set { testDesc = value; }  // set method
     }
 
@@ -161,6 +167,17 @@ else
         pupilFocusAreaWriting = await Http.GetFromJsonAsync<CriteraModel>("subjects/language/pupilFocusAreaWriting.json");
         pupilFocusAreaSpeech = await Http.GetFromJsonAsync<CriteraModel>("subjects/language/pupilFocusAreaSpeech.json");
         pupilFeedback = await Http.GetFromJsonAsync<CriteraModel>("subjects/language/pupilFeedback.json");
+    }
+
+    private void ResetContent()
+    {
+        textAreaCustomInput = "";
+        ExpressionDescription = "";
+        ReflectionDescription = "";
+        AdaptationtDescription = "";
+        FocusAreaWritingDescription = "";
+        FocusAreaSpeechDescription = "";
+        FeedbackDescription = "";
     }
     
     // TODO Move this class to a dedicated file. Used by other pages.

@@ -17,9 +17,9 @@ else
 {
     <div class="row">
         <div class="col">
-            <div class="row">
-                <h5>Generell del:</h5>
-                <textarea @bind="textAreaCustomOnInput" @bind:event="oninput" rows="8" placeholder="Skriv inn generell del som gjelder for alle elever i faget."></textarea>
+            <h5>Generell del:</h5>
+            <div class="row" style="max-width: 100%; margin: auto">
+                <textarea @bind="textAreaCustomOnInput" @bind:event="oninput" rows="5" placeholder="Skriv inn generell del som gjelder for alle elever i faget."></textarea>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@ else
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr class="@GetTrClass(WorkDescription)">
                 <td>@pupilWork.Question</td>
                 <select class="form-control" id="Style" @bind="WorkDescription" @bind:event="onchange">
                     <option value="" selected disabled hidden>Velg alternativ</option>
@@ -46,7 +46,7 @@ else
                 </select>
                                         
             </tr>
-            <tr>
+            <tr class="@GetTrClass(ReflectionDescription)">
                 <td>@pupilReflection.Question</td>
                 <select class="form-control" id="Style" @bind="ReflectionDescription" @bind:event="onchange">
                     <option value="" selected disabled hidden>Velg alternativ</option>
@@ -57,7 +57,7 @@ else
                 </select>
                                                     
             </tr>
-            <tr>
+            <tr class="@GetTrClass(DevelopmentDescription)">
                 <td>@pupilDevelopment.Question</td>
                 <select class="form-control" id="Style" @bind="DevelopmentDescription" @bind:event="onchange">
                     <option value="" selected disabled hidden>Velg alternativ</option>
@@ -68,7 +68,7 @@ else
                 </select>
                                                     
             </tr>
-            <tr>
+            <tr class="@GetTrClass(FocusTopicDescription)">
                 <td>@pupilFocusTopics.Question</td>
                 <select class="form-control" id="Style" @bind="FocusTopicDescription" @bind:event="onchange">
                     <option value="" selected disabled hidden>Velg alternativ</option>
@@ -88,12 +88,27 @@ else
     <div class="row">
 
         <div class="col">
-            <div class="row">
-                <h5>Generert tekst:</h5>
-                <InputTextArea @bind-Value="@TextAreaResult" rows="8"  onClick="this.select();"/>
+            <h5>Generert tekst:</h5>
+            <div class="row"  style="max-width: 100%; margin: auto">
+                <InputTextArea @bind-Value="@TextAreaResult" rows="8" onClick="this.select();" @onfocus="HandleTextAreaClick"/>
             </div>
         </div>
     </div>
+    
+    <div class="row" style="padding-top: 5px">
+        <button @onclick="ResetContent">
+            Tilbakestill innhold
+        </button>
+    </div>
+    
+    <style>
+    .unselected {
+        border: 1px solid red;
+    }
+    .unselected select {
+        border-color: red;
+    }
+</style>
 }
 
 @code {
@@ -111,6 +126,7 @@ else
     public string DevelopmentDescription { get; set; } //= string.Empty;
     public string FocusTopicDescription { get; set; } //= string.Empty;
     public string FullDescription { get ; set; } //= string.Empty;
+    private bool HasClickedTextArea { get; set; } = false;
 
 
     private string textAreaCustomOnInput = "";
@@ -137,7 +153,24 @@ else
         
     }
     
+    private void ResetContent()
+    {
+        textAreaCustomInput = "";
+        WorkDescription = "";
+        ReflectionDescription = "";
+        DevelopmentDescription = "";
+        FocusTopicDescription = "";
+    }
     
+    private string GetTrClass(string description)
+    {
+        return HasClickedTextArea && string.IsNullOrEmpty(description) ? "unselected" : "";
+    }
+
+    private void HandleTextAreaClick()
+    {
+        HasClickedTextArea = true;
+    }
 
     
 
