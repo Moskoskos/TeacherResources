@@ -1,0 +1,34 @@
+﻿{
+  "IngressExamples" : [
+    {
+      "Id": "1",
+      "Semester": "8 Høst",
+      "Text": "Eksempel på generell del"
+    },
+    {
+      "Id": "2",
+      "Semester": "8 Vår",
+      "Text": "Eksempel på generell del"
+    },
+    {
+      "Id": "3",
+      "Semester": "9 Høst",
+      "Text": "Eksempel på generell del"
+    },
+    {
+      "Id": "4",
+      "Semester": "9 Vår",
+      "Text": "Eksempel på generell del"
+    },
+    {
+      "Id": "5",
+      "Semester": "10 Høst",
+      "Text": "Eksempel på generell del"
+    },
+    {
+      "Id": "6",
+      "Semester": "10 Vår",
+      "Text": "Eksempel på generell del"
+    }
+  ]
+}
