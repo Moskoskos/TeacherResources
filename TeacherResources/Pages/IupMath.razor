@@ -1,5 +1,6 @@
 ﻿@page "/iupMath"
 @using System.Net.Mime
+@using TeacherResources.Models
 @inject HttpClient Http
 
 <PageTitle>IUP</PageTitle>
@@ -7,7 +8,7 @@
 
 <div class="h5">Matematikk</div>
 
-@if (pupilWork == null)
+@if (pupilWork == null || IngressExamples == null)
 {
     <p>
         <em>Loading...</em>
@@ -20,6 +21,14 @@ else
             <h5>Generell del:</h5>
             <div class="row" style="max-width: 100%; margin: auto">
                 <textarea @bind="textAreaCustomOnInput" @bind:event="oninput" rows="5" placeholder="Skriv inn generell del som gjelder for alle elever i faget."></textarea>
+            </div>
+            <text>Eksempler:</text>
+            <div style="display: flex; flex-wrap: wrap;"> 
+                @foreach (var ingress in IngressExamples)
+                                {
+                                    <button @onclick="(() => OnButtonClick(ingress.Text))" style="margin: 5px;">@ingress.Semester</button>
+                                }
+                            
             </div>
         </div>
     </div>
@@ -118,8 +127,10 @@ else
     private MathEvaluation? pupilDevelopment;
     private MathEvaluation? pupilFocusTopics;
     
-    private Dictionary<int, List<CriteriaAlternative>> aidDic;
-    private Dictionary<string, Dictionary<string, string>> qaDictionary;
+    private List<IngressExample> IngressExamples { get; set; }
+    
+    //private Dictionary<int, List<CriteriaAlternative>> aidDic;
+    //private Dictionary<string, Dictionary<string, string>> qaDictionary;
 
     public string WorkDescription { get; set; } //= string.Empty;
     public string ReflectionDescription { get; set; } //= string.Empty;
@@ -146,11 +157,24 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        await FetchIngressExamples();
         pupilWork = await Http.GetFromJsonAsync<MathEvaluation>("subjects/math/pupilWork.json");
         pupilReflection = await Http.GetFromJsonAsync<MathEvaluation>("subjects/math/pupilReflection.json");
         pupilDevelopment = await Http.GetFromJsonAsync<MathEvaluation>("subjects/math/pupilDevelopment.json");
         pupilFocusTopics = await Http.GetFromJsonAsync<MathEvaluation>("subjects/math/pupilFocusTopics.json");
         
+        
+    }
+    
+    private async Task FetchIngressExamples()
+    {
+        var model = await Http.GetFromJsonAsync<IngressExampleModel>("subjects/math/ingressExamples.json");
+        IngressExamples = model.IngressExamples;
+    }
+    
+    private void OnButtonClick(string text)
+    {
+        textAreaCustomOnInput = text;
     }
     
     private void ResetContent()
