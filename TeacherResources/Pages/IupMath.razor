@@ -25,10 +25,9 @@ else
             <text>Eksempler:</text>
             <div style="display: flex; flex-wrap: wrap;"> 
                 @foreach (var ingress in IngressExamples)
-                                {
-                                    <button @onclick="(() => OnButtonClick(ingress.Text))" style="margin: 5px;">@ingress.Semester</button>
-                                }
-                            
+                {
+                    <button @onclick="(() => OnButtonClick(ingress.Text))" style="margin: 5px;">@ingress.Semester</button>
+                }
             </div>
         </div>
     </div>
@@ -122,10 +121,10 @@ else
 
 @code {
 
-    private MathEvaluation? pupilWork;
-    private MathEvaluation? pupilReflection;
-    private MathEvaluation? pupilDevelopment;
-    private MathEvaluation? pupilFocusTopics;
+    private CriteriaModel? pupilWork;
+    private CriteriaModel? pupilReflection;
+    private CriteriaModel? pupilDevelopment;
+    private CriteriaModel? pupilFocusTopics;
     
     private List<IngressExample> IngressExamples { get; set; }
     
@@ -139,12 +138,10 @@ else
     public string FullDescription { get ; set; } //= string.Empty;
     private bool HasClickedTextArea { get; set; } = false;
 
-
     private string textAreaCustomOnInput = "";
     private string textAreaCustomInput = "test";
     public string TextAreaCustomInput { get; set; }
-    
-    
+
     private string testDesc; // = string.Empty;
     public string TextAreaResult
     {
@@ -158,12 +155,10 @@ else
     protected override async Task OnInitializedAsync()
     {
         await FetchIngressExamples();
-        pupilWork = await Http.GetFromJsonAsync<MathEvaluation>("subjects/math/pupilWork.json");
-        pupilReflection = await Http.GetFromJsonAsync<MathEvaluation>("subjects/math/pupilReflection.json");
-        pupilDevelopment = await Http.GetFromJsonAsync<MathEvaluation>("subjects/math/pupilDevelopment.json");
-        pupilFocusTopics = await Http.GetFromJsonAsync<MathEvaluation>("subjects/math/pupilFocusTopics.json");
-        
-        
+        pupilWork = await Http.GetFromJsonAsync<CriteriaModel>("subjects/math/pupilWork.json");
+        pupilReflection = await Http.GetFromJsonAsync<CriteriaModel>("subjects/math/pupilReflection.json");
+        pupilDevelopment = await Http.GetFromJsonAsync<CriteriaModel>("subjects/math/pupilDevelopment.json");
+        pupilFocusTopics = await Http.GetFromJsonAsync<CriteriaModel>("subjects/math/pupilFocusTopics.json");
     }
     
     private async Task FetchIngressExamples()
@@ -198,7 +193,7 @@ else
 
     
 
-    public class MathEvaluation
+    public class CriteriaModel
     {
         public int QID { get; set; }
         public string Question { get; set; }

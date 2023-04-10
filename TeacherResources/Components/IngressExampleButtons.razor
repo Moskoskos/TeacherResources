@@ -1,38 +1,18 @@
-﻿@using TeacherResources.Models // Replace with the correct namespace
-@inject HttpClient Http
+﻿@using Microsoft.AspNetCore.Components
+@using TeacherResources.Models
 
-@if (IngressExamples == null)
-{
-    <p>Loading...</p>
-}
-else
-{
-    <div style="display: flex; flex-wrap: wrap;">
-        @foreach (var ingress in IngressExamples)
-        {
-            <button @onclick="(() => OnButtonClick(ingress.Text))" style="margin: 5px;">@ingress.Semester</button>
-        }
-    </div>
-}
+
+<text>Eksempler:</text>
+<div style="display: flex; flex-wrap: wrap;">
+    @foreach (var ingress in Items)
+    {
+        <button @onclick="(() => OnButtonClick.InvokeAsync(ingress.Text))" style="margin: 5px;">@ingress.Semester</button>
+    }
+</div>
 
 @code {
-    [Parameter] public string JsonPath { get; set; }
-    private List<IngressExample> IngressExamples { get; set; }
+    [Parameter] public List<IngressExample> Items { get; set; }
+    [Parameter] public EventCallback<string> OnButtonClick { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        await FetchIngressExamples();
-    }
-
-    private async Task FetchIngressExamples()
-    {
-        var model = await Http.GetFromJsonAsync<IngressExampleModel>(JsonPath);
-        IngressExamples = model.IngressExamples;
-    }
-
-    // Define the OnButtonClick method here, if needed
-    private void OnButtonClick(string text)
-    {
-    // Handle the button click, e.g., update a text area or perform other actions
-    }
+    public string TextboxValue { get; set; }
 }
