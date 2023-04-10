@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Components
+@using TeacherResources.Models
+
+<tr class="@GetTrClass">
+    <td>@Criteria.Question</td>
+    <td>
+        <select class="form-control" @onchange="OnSelectionChanged">
+            <option value="" selected disabled hidden>Velg alternativ</option>
+            @foreach (var alternative in Criteria.Alternatives)
+            {
+                <option value="@alternative.Description">@alternative.Alternative</option>
+            }
+        </select>
+    </td>
+</tr>
+
+@code {
+    [Parameter] public CriteriaModel Criteria { get; set; }
+    [Parameter] public bool HasClickedTextArea { get; set; }
+    [Parameter] public Func<string, bool> IsDescriptionEmpty { get; set; }
+    [Parameter] public EventCallback OnSelectionChangedCallback { get; set; }
+
+    private string GetTrClass => HasClickedTextArea && IsDescriptionEmpty(Criteria.SelectedDescription) ? "unselected" : "";
+
+    private async Task OnSelectionChanged(ChangeEventArgs e)
+    {
+        Criteria.SelectedDescription = e.Value.ToString();
+        await OnSelectionChangedCallback.InvokeAsync(e.Value);
+    }
+    
+    
+}

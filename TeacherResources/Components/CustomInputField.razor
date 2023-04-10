@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<div class="row">
+    <div class="col">
+        <h5>@header</h5>
+        <div class="row" style="max-width: 100%; margin: auto">
+            <textarea @bind="Value" rows="5" placeholder="@placeholder"></textarea>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string header = "Generell del:";
+    private string placeholder = "Skriv inn generell del som gjelder for alle elever i faget.";
+    [Parameter] public string Value { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    
+}

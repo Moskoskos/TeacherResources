@@ -1,0 +1,166 @@
+﻿@page "/iupMathPartial"
+@using System.Net.Mime
+@using System.Text
+@using Microsoft.AspNetCore.Components
+@using TeacherResources.Components
+@using TeacherResources.Models
+@inject HttpClient Http
+
+<PageTitle>IUP</PageTitle>
+
+
+<div class="h5">Matematikk</div>
+<h3 style="color: red">TESTSIDE</h3>
+
+@if (CriteriaList == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p> 
+}
+else
+{
+    <CustomInputField @bind-Value="textAreaCustomOnInput" />
+    
+    <IngressExampleButtons Items="IngressExamples" OnButtonClick="UpdateTextboxValue" />
+    
+    <p>
+        
+    </p>
+    <div>
+        <table class="table">
+           <thead>
+               <tr>
+                   <th>Vurderingskriterie</th>
+                   <th>Alternativer</th>
+               </tr>
+           </thead>
+           <tbody>
+               @foreach (var criteria in CriteriaList)
+               {
+                   <CriteriaSelector Criteria="criteria" HasClickedTextArea="HasClickedTextArea" IsDescriptionEmpty="string.IsNullOrEmpty" OnSelectionChangedCallback="UpdateTextArea" />
+               }
+           </tbody>
+       </table>
+    </div>
+    <p>
+        
+    </p>
+    <div class="row">
+
+        <div class="col">
+            <h5>Generert tekst:</h5>
+            <div class="row"  style="max-width: 100%; margin: auto">
+                <InputTextArea @bind-Value="@TextAreaResult" rows="8" onClick="this.select();" @onfocus="HandleTextAreaClick"/>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" style="padding-top: 5px">
+        <button @onclick="ResetContent">
+            Tilbakestill innhold
+        </button>
+    </div>
+    
+    <style>
+    .unselected {
+        border: 1px solid red;
+    }
+    .unselected select {
+        border-color: red;
+    }
+</style>
+}
+
+@code {
+    
+    private List<IngressExample> IngressExamples { get; set; }
+    public string FullDescription { get ; set; } //= string.Empty;
+
+    private string textAreaCustomInput = "test";
+    public string TextAreaCustomInput { get; set; }
+    
+    private string testDesc; // = string.Empty;
+    
+    private int rows = 10;
+    
+    public string textAreaCustomOnInput { get; set; }
+    public bool HasClickedTextArea { get; set; }
+    public List<CriteriaModel> CriteriaList { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchIngressExamples();
+    // Add the JSON file names to this list
+        var jsonFiles = new List<string>
+        {
+            "subjects/math/pupilWork.json",
+            "subjects/math/pupilReflection.json",
+            "subjects/math/pupilDevelopment.json",
+            "subjects/math/pupilFocusTopics.json"
+            
+        };
+
+        CriteriaList = new List<CriteriaModel>();
+
+        foreach (var jsonFile in jsonFiles)
+        {
+            var criteria = await Http.GetFromJsonAsync<CriteriaModel>(jsonFile);
+            criteria.SelectedDescription = string.Empty;
+            CriteriaList.Add(criteria);
+        }
+    }
+    
+    private void UpdateTextArea()
+    {
+        StateHasChanged();
+    }
+    
+    public string TextAreaResult
+    {
+        get
+        {
+            var result = new StringBuilder(textAreaCustomOnInput);
+            foreach (var criteria in CriteriaList)
+            {
+                result.AppendLine(criteria.SelectedDescription);
+            }
+            return result.ToString();
+        }
+        set { textAreaCustomOnInput = value; }
+    }
+    
+
+
+    private async Task FetchIngressExamples()
+    {
+        var model = await Http.GetFromJsonAsync<IngressExampleModel>("subjects/math/ingressExamples.json");
+        IngressExamples = model.IngressExamples;
+    }
+    
+    private void OnButtonClick(string text)
+    {
+        textAreaCustomOnInput = text;
+    }
+    
+    private async Task UpdateTextboxValue(string value)
+    {
+        textAreaCustomOnInput = value;
+    }
+    
+    private void ResetContent()
+    {
+        textAreaCustomInput = "";
+    }
+    
+    private string GetTrClass(string description)
+    {
+        return HasClickedTextArea && string.IsNullOrEmpty(description) ? "unselected" : "";
+    }
+
+    private void HandleTextAreaClick()
+    {
+        HasClickedTextArea = true;
+    }
+
+}
