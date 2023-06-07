@@ -80,7 +80,7 @@ else
                 <td>@pupilFocusTopics.Question</td>
                 <select class="form-control" id="Style" @bind="FocusTopicDescription" @bind:event="onchange">
                     <option value="" selected disabled hidden>Velg alternativ</option>
-                    @foreach (var alternative in pupilDevelopment.Alternatives)
+                    @foreach (var alternative in pupilFocusTopics.Alternatives)
                     {
                         <option value="@alternative.Description">@alternative.Alternative</option>
                     }
@@ -145,7 +145,7 @@ else
     private string testDesc; // = string.Empty;
     public string TextAreaResult
     {
-        get { return $"{textAreaCustomOnInput}\n{WorkDescription} {ReflectionDescription} {DevelopmentDescription} {FocusTopicDescription}"; }   // get method
+        get { return $"{textAreaCustomOnInput}\n \n{WorkDescription} {ReflectionDescription} {DevelopmentDescription} {FocusTopicDescription}"; }   // get method
         set { testDesc = value; }  // set method
     }
 
