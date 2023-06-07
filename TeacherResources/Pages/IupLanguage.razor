@@ -68,7 +68,17 @@ else
                         <option value="@alternative.Description">@alternative.Alternative</option>
                     }
                 </select>
-                                                    
+                                                                
+            </tr>
+            <tr>
+                <td>@pupilFeedback.Question</td>
+                <select class="form-control" id="Style" @bind="FeedbackDescription" @bind:event="onchange">
+                    <option value="" selected disabled hidden>Velg alternativ</option>
+                    @foreach (var alternative in pupilFeedback.Alternatives)
+                    {
+                        <option value="@alternative.Description">@alternative.Alternative</option>
+                    }
+                </select>
             </tr>
             <tr>
                 <td>@pupilFocusAreaWriting.Question</td>
@@ -90,16 +100,7 @@ else
                     }
                 </select>
             </tr>
-            <tr>
-                <td>@pupilFeedback.Question</td>
-                <select class="form-control" id="Style" @bind="FeedbackDescription" @bind:event="onchange">
-                    <option value="" selected disabled hidden>Velg alternativ</option>
-                    @foreach (var alternative in pupilFeedback.Alternatives)
-                    {
-                        <option value="@alternative.Description">@alternative.Alternative</option>
-                    }
-                </select>
-            </tr>
+
             
             </tbody>
         </table>
@@ -152,7 +153,7 @@ else
     private string testDesc; // = string.Empty;
     public string TextAreaResult
     {
-        get { return $"{textAreaCustomOnInput}\n{ExpressionDescription} {ReflectionDescription} {AdaptationtDescription} {FocusAreaWritingDescription} {FocusAreaSpeechDescription} {FeedbackDescription}"; }   // get method
+        get { return $"{textAreaCustomOnInput}\n \n{ExpressionDescription} {ReflectionDescription} {AdaptationtDescription} {FeedbackDescription}\n \n{FocusAreaWritingDescription} {FocusAreaSpeechDescription}"; }   // get method
         set { testDesc = value; }  // set method
     }
 

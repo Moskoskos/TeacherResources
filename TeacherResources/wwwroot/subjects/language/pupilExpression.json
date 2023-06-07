@@ -5,17 +5,17 @@
     {
       "AID": "1",
       "Alternative": "Lavt nivå",
-      "Description": "Gjennom semesteret har du vist utfordringer med for å utrykke deg skriftlig og muntlig."
+      "Description": "Gjennom semesteret har du hatt litt utfordringer med å utrykke deg i faget."
     },
     {
       "AID": "2",
       "Alternative": "Middels nivå",
-      "Description": "Gjennom semesteret har du vist gjennomgående gode ferdigheter til å utrykke deg godt både skriftlig og muntlig."
+      "Description": "Gjennom semesteret har du vist gjennomgående gode ferdigheter til å utrykke deg godt i faget."
     },
     {
       "AID": "3",
       "Alternative": "Høyt nivå",
-      "Description": "Gjennom semesteret har du vist utmerkede ferdigheter i å uttrykke deg at du klarer å utrykke deg godt både skriftlig og muntlig."
+      "Description": "Gjennom semesteret har du vist utmerkede ferdigheter til å uttrykke deg i faget."
     }
   ]
 }
